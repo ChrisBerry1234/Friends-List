@@ -1,31 +1,32 @@
-{
-    "users": [
-        {
-            "firstName": "Lorenzo",
-            "lastName": "Scott",
-            "email": "lorenzoscott@gmail.com",
-            "DOB": "19-12-04"
-        }, 
-
-        {
-            "firstName": "John",
-            "lastName": "wick",
-            "email": "johnwick@gmail.com",
-            "DOB": "22-01-1990"
-        },
-
-        {
-            "firstName": "Joyal",
-            "lastName": "white",
-            "email": "joyalwhite@gmail.com",
-            "DOB": "21-03-1989"
-        },
-
-        {
-            "firstName": "Jon",
-            "lastName": "Lovato",
-            "email": "jonlovato@theworld.com",
-            "DOB": "10/10/1995"
-        }
-    ]
-}
+[
+   {
+      "firstName": "Lorenzo",
+      "lastName": "Scott",
+      "email": "lorenzoscott@gmail.com",
+      "DOB": "19-12-04"
+   },
+   {
+      "firstName": "John",
+      "lastName": "wick",
+      "email": "johnwick@gmail.com",
+      "DOB": "22-01-1990"
+   },
+   {
+      "firstName": "Joyal",
+      "lastName": "white",
+      "email": "joyalwhite@gmail.com",
+      "DOB": "21-03-1989"
+   },
+   {
+      "firstName": "Jon",
+      "lastName": "Lovato",
+      "email": "jonlovato@theworld.com",
+      "DOB": "10/10/1995"
+   },
+   {
+      "firsName": "Jon",
+      "lastName": "Lovato",
+      "email": "jonlovato@theworld.com",
+      "DOB": "10/10/1995"
+   }
+]

@@ -1,6 +1,6 @@
 const express = require('express');
 const { users } = require('../data/data.json');
-const { request } = require('http');
+const addNewUser = require('../utils/adduser.js');
 
 let router = express.Router();
 
@@ -39,6 +39,7 @@ router.post('/', (req, res) => {
         "DOB": DOB
     };
 
+    addNewUser(newUser);
     res.send(200).json(`Successful in Adding ${firstName} ${lastName} with Email: ${email}`);
 })
 module.exports = router;
