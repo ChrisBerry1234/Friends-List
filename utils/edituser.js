@@ -30,12 +30,16 @@ const editUser = async (user) => {
 
             await fs.writeFile(getFilePath, JSON.stringify(data, null, 2), {encoding:'utf8', flag: 'w'});
             console.log("User updated successfully");
-            console.log("Updated user details:", data);
+            return {success: true, message: "User updated successfully"};
+        }
+        else{
+            return {success: false, message: "User not found"};
+        }
     }
-}
 
     catch(error) {
         console.error("Error reading file:", error);
+        return {success: false, message: "Error Updating User"}
     }
 }
 

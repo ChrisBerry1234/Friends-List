@@ -19,10 +19,16 @@
       "DOB": "21-03-1989"
     },
     {
-      "firsName": "Jon",
+      "firstName": "Jon",
       "lastName": "Lovato",
       "email": "jonlovato@theworld.com",
       "DOB": "10/10/1995"
+    },
+    {
+      "firstName": "Jason",
+      "lastName": "Atkinson",
+      "email": "jasonatkinson@theworld.com",
+      "DOB": "04/07/2000"
     }
   ]
 }
