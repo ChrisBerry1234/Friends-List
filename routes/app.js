@@ -77,4 +77,17 @@ router.put('/:email', async (req, res) => {
     }
 })
 
+router.delete('/:email', async (req, res) => {
+    const email = req.params.email;
+    const filtered_users = users.filter(user => user.email === email);
+    if (filtered_users.length === 0) {
+        return res.status(404).json({message: "User not found"});
+    }
+
+    const result =await deleteUser(filtered_users[0]);
+   
+    
+
+})
+
 module.exports = router;
