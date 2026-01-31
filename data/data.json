@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "firstName": "Lorenzo",
-      "lastName": "Scott",
-      "email": "lorenzoscott@gmail.com",
-      "DOB": "19-12-04"
-    },
-    {
       "firstName": "John",
       "lastName": "wick",
       "email": "johnwick@gmail.com",
@@ -23,12 +17,6 @@
       "lastName": "Berry",
       "email": "jonlovato@theworld.com",
       "DOB": "07/19/2001"
-    },
-    {
-      "firstName": "Jason",
-      "lastName": "Atkinson",
-      "email": "jasonatkinson@theworld.com",
-      "DOB": "04/07/2000"
     }
   ]
 }

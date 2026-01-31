@@ -1,7 +1,8 @@
 const express = require('express');
 const { users } = require('../data/data.json');
 const addNewUser = require('../utils/adduser.js');
-const editUser = require('../utils/edituser.js')
+const editUser = require('../utils/edituser.js');
+const deleteUser = require('../utils/deleteusers.js');
 
 let router = express.Router();
 
@@ -84,10 +85,11 @@ router.delete('/:email', async (req, res) => {
         return res.status(404).json({message: "User not found"});
     }
 
-    const result =await deleteUser(filtered_users[0]);
-   
-    
-
+    const result = await deleteUser(filtered_users[0]);
+    if (result.success) {
+        res.status(200).json({message: result.message});
+    } else {
+        res.status(404).json({message: result.message});
+    }
 })
-
 module.exports = router;
