@@ -5,6 +5,9 @@ let PORT = 5000;
 //INSTANTIATE EXPRESS APP
 const app = express();
 
+//MIDDLEWARE
+app.use(express.json());
+
 //FOR USERS, USE THE IMPORTED ROUTES
 app.use('/users', routes);
 

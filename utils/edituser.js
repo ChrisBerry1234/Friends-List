@@ -43,14 +43,4 @@ const editUser = async (user) => {
     }
 }
 
-
-const user = {
-         "firstName": "Chris",
-         "lastName": "white",
-         "email": "joyalwhite@gmail.com",
-         "DOB": "21-03-1989"
-};
-
-editUser(user);
-
 module.exports = editUser;
