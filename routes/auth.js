@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 const path = require('path')
 require('dotenv').config({path: path.resolve(__dirname, '../.env')})
 
-
 const app = express();
 const PORT = 3000;
 
@@ -26,18 +25,22 @@ app.use('/users', (req, res, next) => {
     if (!req.session.authorization) {
         return res.status(403).json({message: "User not logged in"})
     }
-    let token = req.session.authorization.accesstoken;
-    jwt.verify(token, SECRET_KEY, (err, user) => {
+    else{   
+        let token = req.session.authorization.accesstoken;
+        jwt.verify(token, SECRET_KEY, (err, user) => {
         if (err){
             return res.status(403).json({message: "Invalid or expired token"})
         }
-        //SET THE REQUEST BODY TO THE USER FOR ACCESS
-        req.user = user;
-        next();
+        else{  
+             //SET THE REQUEST BODY TO THE USER FOR ACCESS
+            req.user = user;
+            next();
+        }
     })
+    }
 });
 
-//USER ROUTES
+//USER ROUTES ONCE USER IS AUTHENTICATED 
 app.use('/users', routes)
 
 //POST LOGIN TO AUTHORIZE USER LOGIN AND GENERATE JWT UPON SUCCESSFUL REQUEST
@@ -47,9 +50,10 @@ app.post('/login', (req, res) => {
         return res.status(400).send("Username is required");
     }
     // In a real app, you would verify credentials against a database
-    const accesstoken = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const accesstoken = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
     //assign newly made token to JSON payload 
-    res.session.authorization = { accesstoken }
+    req.session.authorization = { accesstoken }
+    return res.status(200).json({message: "Login successful"})
 })
 
 app.listen(PORT, (req, res) => {

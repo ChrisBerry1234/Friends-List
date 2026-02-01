@@ -1,22 +1,39 @@
 {
   "users": [
     {
-      "firstName": "John",
-      "lastName": "wick",
-      "email": "johnwick@gmail.com",
-      "DOB": "22-01-1990"
-    },
-    {
       "firstName": "Chris",
       "lastName": "white",
       "email": "joyalwhite@gmail.com",
-      "DOB": "21-03-1989"
+      "DOB": "21-03-1989",
+      "password": "$2b$10$7WqbpP1/szs0Rq9JPa8qxeITG6kD6AbSxZFnDgE3r7toXYotXJKrK"
     },
     {
       "firstName": "Chris",
       "lastName": "Berry",
       "email": "jonlovato@theworld.com",
-      "DOB": "07/19/2001"
+      "DOB": "07/19/2001",
+      "password": "$2b$10$Dj2R9AVvpZBgBYzj4Xgqmuac/Op9mzcyMxFDALqJtjhaCZb/df0ty"
+    },
+    {
+      "firsName": "John",
+      "lastName": "Doe",
+      "email": "johndoe@example.com",
+      "DOB": "01-01-1990",
+      "password": "$2b$10$esdKvrodQo9qGibw1exkPuqHoAmezAq07dTKZV1zuASwHAulQGQGi"
+    },
+    {
+      "firsName": "Jason",
+      "lastName": "Atkinson",
+      "email": "jasonatkinson@example.com",
+      "DOB": "04-07-2000",
+      "password": "$2b$10$ysIabpud3o1Tn9IS3H7nxuNSf7LPXq35Y65Ue/JI2TjrDvTNcn6CK"
+    },
+    {
+      "firsName": "Cameron",
+      "lastName": "Berry",
+      "email": "camberry@gmail.com",
+      "DOB": "12-09-2004",
+      "password": "$2b$10$WwCC24i.8G703/aATPwoLuVsl5cCiuvArnZBnPbvrLFsp4zGgjnme"
     }
   ]
 }

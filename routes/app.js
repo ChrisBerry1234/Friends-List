@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     //IF ALL INFORMATION IS PRESENT
 
     const newUser = {
-        "firsName": firstName,
+        "firstName": firstName,
         "lastName": lastName,
         "email": email,
         "DOB": DOB
