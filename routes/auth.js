@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session')
-const routes = require('./app.jd');
+const routes = require('./app.js');
 const jwt = require('jsonwebtoken')
 const path = require('path')
 require('dotenv').config({path: path.resolve(__dirname, '../.env')})
