@@ -18,11 +18,11 @@ const authenticateUser = async (userCredentials) => {
 
         const user = users.find(person => person.email === email);
         if(!user){
-            return {"Success": false, "message": "User not found"};
+            return {"Success": false, "message": "User not found, Please register first"};
         }
         //ELSE
         try{
-            if( await bcrypt.compare(password,user.password)) return {"Success": true, "message": "User authenticated"};
+            if(await bcrypt.compare(password,user.password)) return {"Success": true, "message": "User authenticated"};
             else return {"Success": false, "message": "Password incorrect, User not Allowed"};
         }
         catch(err){
@@ -34,9 +34,6 @@ const authenticateUser = async (userCredentials) => {
     }
 }
 
-const user = {
-    "email": "jonlovato@theworld.com",
-    "password": "myPassword"
-}
+//RETURN A PROMISE THAT NEEDS TO BE FULLFILLED
 
-const result = authenticateUser(user).then(response => console.log(response));
+module.exports = authenticateUser; 
