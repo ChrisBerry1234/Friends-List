@@ -3,8 +3,9 @@ const session = require('express-session')
 const routes = require('./app.js');
 const jwt = require('jsonwebtoken');
 const path = require('path');
-const authenticateUser = require('../utils/password_authenticate.js')
-require('dotenv').config({path: path.resolve(__dirname, '../.env')})
+const authenticateUser = require('../utils/password_authenticate.js');
+const registerUser = require('../utils/passwordgenerate.js');
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 
 const app = express();
 const PORT = 3000;
@@ -52,18 +53,36 @@ app.post('/login', (req, res) => {
     }
     //ELSE
     authenticateUser(user).then(response => {
-        if(response.Success === True){
+        if(response.Success === true){
             //GIVE ACCESS TOKEN TO USER
-            const accesstoken = jwt.sign({username}, SECRET_KEY, {expiresIn: '1hr'})
+            const accesstoken = jwt.sign({email: user.email}, SECRET_KEY, {expiresIn: '1h'})
             //ADD TO SESSION FOR FUTURE DECONSTRUCTION
-            req.session.authorization = accesstoken;
-            return res.status(200).json({message: `${response.message}`})
+            req.session.authorization = {accesstoken};
+            return res.status(200).json({message: `${response.message}`});
         }
         else{
-            return res.status(401).json({message: `${response.message}`})   
+            return res.status(401).json({message: `${response.message}`});   
         }
+    }).catch(err => {
+        return res.status(500).json({message: "Internal server error"});
+    })
 })
+
+app.post('/register', async (req, res) => {
+    const new_user = req.body;
+    if (!new_user.firstName || !new_user.lastName || !new_user.email || !new_user.DOB || !new_user.password) {
+        return res.status(400).json({message: "All fields are required"});
+    }
+    const result = await registerUser(new_user);
+
+    if (result.success){
+        return res.status(201).json({message: `${result.message}`});
+    }
+    else{
+        return res.status(409).json({message: `${result.message}`});
+    }
 })
+
 
 app.listen(PORT, (req, res) => {
     console.log("Auth Server is listening on port " + PORT);

@@ -6,21 +6,30 @@ const FILE = 'data.json'
 
 const filepath = path.resolve(__dirname, FOLDER, FILE);
 
-const addPassword = async() => {
+const passwordGenerate = async (newuser) => {
     try{
         const raw_data = await fs.readFile(filepath, {encoding:'utf8', flag: 'r'})
         const data = JSON.parse(raw_data);
         
-        for (let i = 0; i < data.users.length; i++){
-            let salt = await bcrypt.genSalt(10)
-            let password = await bcrypt.hashSync("myPassword", salt);
-            data.users[i] = {...data.users[i], password: password}
+        const filtered_data = data.users.filter(users => users.email === newuser.email)
+        if (filtered_data.length === 0){
+            //GENERATE PASSWORD FOR NEWUSER
+            let salt = await bcrypt.genSalt(10);
+            let password = await bcrypt.hash(newuser.password, salt);
+            newuser.password = password;
+            data.users.push(newuser)
+
+            //WRITE TO FILE
+            await fs.writeFile(filepath, JSON.stringify(data, null, 2), {flag: 'w'})
+            return {success: true, message: `User with email ${newuser.email} added successfully`}
         }
-        await fs.writeFile(filepath, JSON.stringify(data, null, 2));
+        else{
+            return {success: false, message: `User with email ${newuser.email} already exists`}
+        }
     }
     catch(err){
         console.error('Error generating salt:', err);
     }
 }
 
-addPassword();
+module.exports = passwordGenerate;
